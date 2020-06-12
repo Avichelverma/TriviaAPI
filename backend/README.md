@@ -71,24 +71,19 @@ python test_flaskr.py
 ```
 
 ## Run the Frontend script
-
 The frontend app is built on React. In order to run the app use ```npm start```.
-
 Open ```localhost:3000``` to view the frontend in the browser.
 
 ## API Reference Guide
 
 ### Getting Started
-
 - Frontend URL: ```http://localhost:3000/```
 - Backend URL : ```http://127.0.0.1:5000/ or localhost:5000/```
-
 No Authentication or API keys are required for this project.
 
 ### API Endpoints Documentation
 
 #### GET/categories
-
 - Returns list of categories with id and type.
 - Sample command : ```curl -X GET localhost:5000/categories```
 ```
@@ -105,7 +100,6 @@ No Authentication or API keys are required for this project.
 }
 ```
 #### GET/questions
-
 - Returns a list of all questions
 - Questions are paginated
 - Individual pages could be requested using query string ```?pages=1```
@@ -212,9 +206,7 @@ C:\Users\avich\Desktop\FullStack NanoDegree\TriviaAPI\starter>curl -X GET localh
 ```
 
 #### DELETE /questions/<int:question_id>
-
 - Deletes a question with question_id from URL parameters
-
 - Sample command : ```curl -X DELETE localhost:5000/questions/5```
 ```
 {
@@ -222,9 +214,7 @@ C:\Users\avich\Desktop\FullStack NanoDegree\TriviaAPI\starter>curl -X GET localh
   "success": true
 }
 ```
-
 #### POST /questions
-
 - Creates a new question and inserts the payload in the database
 - Request body : {question:string, answer:string, difficult:string, category:string}
 ```
@@ -233,18 +223,12 @@ C:\Users\avich\Desktop\FullStack NanoDegree\TriviaAPI\starter>curl -X GET localh
     'message': 'Question added successfully'
 }
 ```
-
 #### POST /question/search
-
 - Fetches all questions where substring matches to the seach-term (case-insensitive)
 - Request body : { searchTerm:string }
 - Returns: List of questions, number of total questions and current category.
-
-
 #### GET /categories/<int:category_id>/questions
-
 - Fetches a dictionary of questions for a specific category
-
 Sample Command: ```curl -X GET localhost:5000/categories/6/questions```
 ```
 {
@@ -276,9 +260,7 @@ Sample Command: ```curl -X GET localhost:5000/categories/6/questions```
   "total_questions": 3
 }
 ```
-
 #### POST /quizzes
-
 - Fetches a random question in a specific category which is not previously asked.(no-repeated questions)
 - Request Body: quiz_category and previous_questions.
 - Returns: Random questions within the given category.
@@ -293,11 +275,8 @@ Sample Command: ```curl -X GET localhost:5000/categories/6/questions```
   "success": True
 }
 ```
-
 ### Error Handling
-
 - 200 - Success Code
-
 - Following errors are handled with their status codes:
   - 400 - Bad Error Request
   - 404 - Page Not Found
@@ -312,7 +291,6 @@ Sample Command: ```curl -X GET localhost:5000/categories/6/questions```
     'message': 'Unproccessable Request'
 }
 ```
-
 ### Author
 - Avichel Verma developed the following APIs; Successfully tested the APIs
 - Udacity for providing Starter files for Frontend and Backend
