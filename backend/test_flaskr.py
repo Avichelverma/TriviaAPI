@@ -30,7 +30,8 @@ class TriviaTestCase(unittest.TestCase):
         pass
 
     """
-    Write at least one test for each test for successful operation and for expected errors.
+    Write at least one test for each test for successful
+    operation and for expected errors.
     """
 
     def test_get_categories(self):
@@ -47,7 +48,8 @@ class TriviaTestCase(unittest.TestCase):
 
     def test_paginated_questions(self):
 
-        # Test to get dictionary of questions in a specific category and have a success code of 200
+        # Test to get dictionary of questions
+        # in a specific category and have a success code of 200
         response = self.client().get('/questions')
         data = json.loads(response.data)
 
@@ -118,7 +120,8 @@ class TriviaTestCase(unittest.TestCase):
 
     def test_delete_question_id_notexist(self):
 
-        # Test to delete a question with invalid id and have a status code of 422
+        # Test to delete a question with invalid id
+        # and have a status code of 422
         response = self.client().delete('/questions/100')
 
         data = json.loads(response.data)
@@ -129,8 +132,8 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'Unproccessable Request')
 
     def test_search_questions(self):
-
-        # Test to seach a substring in dictionary of questions and have a status code of 200
+        # Test to seach a substring in dictionary of questions
+        # and have a status code of 200
         request_data = {
             'searchTerm': 'title'
         }
@@ -143,8 +146,8 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
 
     def test_search_question_notFound(self):
-
-        # Test to seach a substring in dictionary of questions and have a status code of 404
+        # Test to seach a substring in dictionary of questions
+        # and have a status code of 404
         request_data = {
             'searchTerm': 'zcaer'
         }
@@ -169,8 +172,8 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['current_questions'], 'Geography')
 
     def test_invalid_category(self):
-
-        # Test to get question by categories with invalid category_id and get status code of 422
+        # Test to get question by categories
+        # with invalid category_id and get status code of 422
         response = self.client().get('/categories/10/questions')
         data = json.loads(response.data)
 

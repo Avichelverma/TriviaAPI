@@ -26,7 +26,8 @@ def create_app(test_config=None):
     setup_db(app)
 
     '''
-  Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
+  Set up CORS. Allow '*' for origins.
+  Delete the sample route after completing the TODOs
   '''
     CORS(app, resources={'/': {'origins': '*'}})
     '''
@@ -77,7 +78,8 @@ def create_app(test_config=None):
 
   TEST: At this point, when you start the application
   you should see questions and categories generated,
-  ten questions per page and pagination at the bottom of the screen for three pages.
+  ten questions per page and pagination at the
+  bottom of the screen for three pages.
   Clicking on the page numbers should update the questions.
   '''
     @app.route('/questions', methods=['GET'])
@@ -105,7 +107,8 @@ def create_app(test_config=None):
     '''
   Create an endpoint to DELETE question using a question ID.
 
-  TEST: When you click the trash icon next to a question, the question will be removed.
+  TEST: When you click the trash icon next to a question,
+  the question will be removed.
   This removal will persist in the database and when you refresh the page.
   '''
     @app.route('/questions/<int:question_id>', methods=['DELETE'])
@@ -119,7 +122,7 @@ def create_app(test_config=None):
                 'success': True,
                 'message': "Successfully deleted question"
             }), 200
-        except:
+        except Exception:
             abort(422)
 
     '''
@@ -141,7 +144,8 @@ def create_app(test_config=None):
         difficulty = question_data.get('difficulty', '')
         category = question_data.get('category', '')
 
-        if(question == '' or answer == '' or difficulty == '' or category == ''):
+        if(question == '' or answer == ''
+           or difficulty == '' or category == ''):
             abort(422)
         try:
             question = Question(
@@ -157,7 +161,7 @@ def create_app(test_config=None):
                 'success': True,
                 'message': 'Question added successfully',
             }), 200
-        except:
+        except Exception:
             abort(422)
 
     '''
@@ -192,7 +196,7 @@ def create_app(test_config=None):
                 'questions': list_paginated_question,
                 'total_questions': len(list_paginated_question)
             }), 200
-        except:
+        except Exception:
             abort(404)
     '''
   Create a GET endpoint to get questions based on category.
@@ -247,7 +251,8 @@ def create_app(test_config=None):
                 questions = Question.query.filter(
                     Question.id.notin_((prev_questions))).all()
             else:
-                questions = Question.query.filter_by(category=category['id']).filter(
+                questions = Question.query.filter_by(
+                    category=category['id']).filter(
                     Question.id.notin_((prev_questions))).all()
 
             next_question = questions[random.randrange(
@@ -257,12 +262,12 @@ def create_app(test_config=None):
                 'success': True,
                 'question': next_question
             })
-        except:
+        except Exception:
             abort(400)
 
     '''
-  Create error handlers for all expected errors 
-  including 404 and 422. 
+  Create error handlers for all expected errors
+  including 404 and 422.
   '''
     @app.errorhandler(400)
     def bad_request(error):
