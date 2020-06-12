@@ -3,11 +3,11 @@
 Trivia APIs are RESTful API that allows people to play the game of trivia by have their own frontend but fetching questions and categories from the API services.
 
 The api allows:
-    1. Display list of questions and categories.
-    2. Delete Questions
-    3. Add questions to the database
-    4. Search for questions in the database using string query.
-    5. Play a game of quiz, random questions on the basis of category.
+1. Display list of questions and categories.
+2. Delete Questions
+3. Add questions to the database
+4. Search for questions in the database using string query.
+5. Play a game of quiz, random questions on the basis of category.
 
 ## Getting Started
 
@@ -85,7 +85,7 @@ Open ```localhost:3000``` to view the frontend in the browser.
 
 No Authentication or API keys are required for this project.
 
-### Endpoints
+### API Endpoints Documentation
 
 #### GET/categories
 
@@ -238,7 +238,7 @@ C:\Users\avich\Desktop\FullStack NanoDegree\TriviaAPI\starter>curl -X GET localh
 
 - Fetches all questions where substring matches to the seach-term (case-insensitive)
 - Request body : { searchTerm:string }
-
+- Returns: List of questions, number of total questions and current category.
 
 
 #### GET /categories/<int:category_id>/questions
@@ -280,6 +280,19 @@ Sample Command: ```curl -X GET localhost:5000/categories/6/questions```
 #### POST /quizzes
 
 - Fetches a random question in a specific category which is not previously asked.(no-repeated questions)
+- Request Body: quiz_category and previous_questions.
+- Returns: Random questions within the given category.
+```
+{
+  "question":{
+    "question": "What boxer's original name is Cassius Clay?",
+    "answer"  : "Muhammad Ali",
+    "difficulty" : "1",
+    "category" : "4"
+  },
+  "success": True
+}
+```
 
 ### Error Handling
 
